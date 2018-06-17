@@ -15,7 +15,7 @@ Hostname: ip-172-31-28-92
 
 ## Installation steps and commands
 
-** Kafka installation **
+### Kafka installation 
 
 1. Install Kafka by typing the below command in your terminal:  
 
@@ -31,7 +31,7 @@ Hostname: ip-172-31-28-92
 
 4. Finally, you can start your kafka server and create the topics by following the below commands:  
 
-   // Open a terminal and run the below zookeeper service command:  
+   // Open a terminal and run below zookeeper server command  
 
    cd kafka 
    bin/zookeeper-server-start.sh config/zookeeper.properties 
@@ -59,7 +59,7 @@ Hostname: ip-172-31-28-92
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-** Git installation **
+### Git installation
 
 sudo yum install git
 
@@ -68,22 +68,29 @@ git --version
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
 
+### Project
+
+// Firstly clone the Spark project from below link
+
 git clone https://github.com/NavyaSreeKanakala/spark-project.git
 
 
-// Kafka 
+#### Kafka
+
+// Open a new terminal and run Kafka server using below commands
 
 cd kafka
 
 bin/kafka-server-start.sh config/server.properties   
 
+// Now open another new terminal and create a Kafka topic using below commands
 
 export PATH=$PATH:/home/ec2-user/kafka/bin 
 kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic orders_data
 
+// After topic creation in Kafka, navigate to kafka directory present in the Spark project folder and run the below given script
 
 cd spark-project/spark_dashboard/kafka
-
 
 vi push_orders_data_in_topic.sh
 
@@ -108,24 +115,37 @@ done
 
 ```
 
+// Command to run script for pushing data to Kafka
 
 /bin/bash push_orders_data_in_topic.sh ../data/ordersdata ip-172-31-28-92:9092 orders_data
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-// Spark
+#### Spark
+
+// Open a new terminal and create another Kafka topic
 
 export PATH=$PATH:/home/ec2-user/kafka/bin 
 
 kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic orders_ten_sec_data
 
+// After topic creation, type below command to be a super user
+
 sudo -i
+
+// Navigate to spark directory present in the Spark project folder and submit below python script to Spark
 
 cd /home/ec2-user/spark-project/spark_dashboard/spark
 
+// Install pykafka using below pip command
+
 pip install pykafka
 
+// Open the python script present in Spark folder of project and change the hostname accordingly
+
 vi spark_streaming_order_status.py
+
+```
 
 from pyspark import SparkContext
 
@@ -175,17 +195,21 @@ ssc.start()
 
 ssc.awaitTermination()
 
+```
+
 // Command to submit the Spark application
 
 spark-submit --jars spark-streaming-kafka-assembly_2.10-1.6.0.jar spark_streaming_order_status.py localhost:2181 orders_data
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
-// Node.js
+#### Node.js
+
+// Navigate to nodejs directory present in the Spark project folder
 
 cd spark-project/spark_dashboard/nodejs
 
-1. Install node.js and some dependencies using below commands:
+// Install node.js and some dependencies using below commands
 
 curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 
@@ -197,7 +221,11 @@ npm install socket.io
 
 npm install kafka-node
 
+// Below javascript file pull the data from Kafka topic namely orders_ten_sec_data and display results in highcharts
+
 vi index.js
+
+```
 
 var app = require('express')();
 
@@ -245,10 +273,13 @@ http.listen(port, function(){
     console.log("Running on port " + port)
 });
 
+```
+
+// Command to run node.js file
 
 node index.js
 
-After node server is started, go to http://YOUR_WEB_CONSOLE:PORT_NUMBER to access analytics dashboard.
+// After node server is started, go to http://YOUR_WEB_CONSOLE:PORT_NUMBER to access analytics dashboard
 
 http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 
@@ -257,26 +288,30 @@ http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 
 // Terminal 1: Data is being pushed to a topic named orders_data
 
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output1.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output1.png)
    
 
 // Terminal 2: Data is read from topic orders_data by Spark streaming in 10 secs interval & pushed to another Kafka topic namely orders_ten_sec_data
 
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output2.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output2.png)
    
 
 // Terminal 3: Data is read from topic orders_ten_sec_data and pushed to index.js file
 
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output3.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output3.png)
    
 
 // Terminal 4: Using socket.io, data is streamed from node.js console to Highcharts
 
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output4.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output4.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output5.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output5.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output6.png)
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output6.png)
+   
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output7.png)
+   
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output8.png)
    
 
 ## Future Possibilites
@@ -289,7 +324,7 @@ http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 2. We can also Splunk, Datameer, Tableau for creating dashboards instead of High charts
 
 
-## Commonly occurred errors
+## Most common errors
 
 // Problem 1: YarnScheduler: Initial job has not accepted any resources; check your cluster UI to ensure that workers are registered and have sufficient resources
 
