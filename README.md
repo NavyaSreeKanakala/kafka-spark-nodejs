@@ -1,7 +1,7 @@
 # spark-kafka-nodejs
 Building an analytics dashboard using Spark, Kafka, node.js
 
-EMR Cluster details
+## EMR Cluster details
 
 Cluster name: Bootcamp-Spark1
 
@@ -13,22 +13,21 @@ Key-pair: ******.pem, ******.ppk
 
 Hostname: ip-172-31-28-92
 
-----------------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------
+## Installation steps and Commands
 
 ** Kafka installation **
 
 1. Install Kafka by typing the below command in your terminal:  
 
-wget https://archive.apache.org/dist/kafka/0.11.0.0/kafka_2.11-0.11.0.0.tgz  
+   wget https://archive.apache.org/dist/kafka/0.11.0.0/kafka_2.11-0.11.0.0.tgz  
 
 2. With the help of tar command, untar the downloaded kafka file:  
 
-tar -xzf kafka_2.11-0.11.0.0.tgz  
+   tar -xzf kafka_2.11-0.11.0.0.tgz  
 
 3. Now rename the extracted file with the help of mv command: 
 
-mv kafka_2.11-0.11.0.0 kafka  
+   mv kafka_2.11-0.11.0.0 kafka  
 
 4. Finally, you can start your kafka server and create the topics by following the below commands:  
 
@@ -245,15 +244,48 @@ http.listen(port, function(){
 
 node index.js
 
-After node server is started, go to http://YOUR_WEB_CONSOLE:PORT_NUMBER to access the real-time analytics dashboard
+After node server is started, go to http://YOUR_WEB_CONSOLE:PORT_NUMBER to access analytics dashboard.
 
 http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 
 
-----------------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------
+## Screenshots
 
-** ERROR **
+// Terminal 1: Data is being pushed to a topic named orders_data
+
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output1.png)
+   
+
+// Terminal 2: Data is read from topic orders_data by Spark streaming in 10 secs interval & pushed to another Kafka topic namely orders_ten_sec_data
+
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output2.png)
+   
+
+// Terminal 3: Data is read from topic orders_ten_sec_data and pushed to index.js file
+
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output3.png)
+   
+
+// Terminal 4: Using socket.io, data is streamed from node.js console to Highcharts
+
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output4.png)
+   
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output5.png)
+   
+   ![alt text](https://github.com/NavyaSreeKanakala/pig-hive-hcatalog-hue/blob/master/output6.png)
+   
+
+## Future Possibilites
+
+1. Similarly we can build more dashboards for analysis such as, 
+    i) Most purchased products
+    ii) Most viewed 
+    For different products using e-commerce data.
+ 
+2. We can also Splunk, Datameer, Tableau for creating dashboards instead of High charts
+
+
+## Commonly occurred errors
 
 // Problem 1: YarnScheduler: Initial job has not accepted any resources; check your cluster UI to ensure that workers are registered and have sufficient resources
 
