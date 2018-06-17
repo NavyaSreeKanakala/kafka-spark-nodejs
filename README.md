@@ -317,8 +317,11 @@ http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 ## Future Possibilites
 
 1. Similarly we can build more dashboards for analysis such as, 
+    
     i) Most purchased products
+    
     ii) Most viewed 
+    
     For different products using e-commerce data.
  
 2. We can also Splunk, Datameer, Tableau for creating dashboards instead of High charts
