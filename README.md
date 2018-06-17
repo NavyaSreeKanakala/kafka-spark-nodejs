@@ -1,6 +1,22 @@
 # spark-kafka-nodejs
 Building an analytics dashboard using Spark, Kafka, node.js
 
+## Objective
+
+To build an analytics dashboard to visualize number of orders getting shipped in every 10 secs interval of time using Spark, Kafka, node.js
+
+## Tools and technologies used
+
+Best suited technologies:
+
+1. Apache Kafka
+ 
+2. Apache Spark
+ 
+3. Node.js
+ 
+4. High charts
+
 ## EMR Cluster details
 
 Cluster name: Bootcamp-Spark1
