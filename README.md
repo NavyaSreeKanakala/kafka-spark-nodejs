@@ -87,7 +87,7 @@ cd spark-project/spark_dashboard/kafka
 
 vi push_orders_data_in_topic.sh
 
-'''
+```
 
 #!/bin/bash
 
@@ -106,7 +106,7 @@ do
 
 done
 
-'''
+```
 
 
 /bin/bash push_orders_data_in_topic.sh ../data/ordersdata ip-172-31-28-92:9092 orders_data
