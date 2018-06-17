@@ -13,7 +13,7 @@ Key-pair: ******.pem, ******.ppk
 
 Hostname: ip-172-31-28-92
 
-## Installation steps and Commands
+## Installation steps and commands
 
 ** Kafka installation **
 
@@ -31,30 +31,30 @@ Hostname: ip-172-31-28-92
 
 4. Finally, you can start your kafka server and create the topics by following the below commands:  
 
-// Open a terminal and run the below zookeeper service command:  
+   // Open a terminal and run the below zookeeper service command:  
 
-cd kafka 
-bin/zookeeper-server-start.sh config/zookeeper.properties 
+   cd kafka 
+   bin/zookeeper-server-start.sh config/zookeeper.properties 
 
-// Open a terminal>navigate to renamed kafka folder> start your kafka server  
+   // Open a terminal>navigate to renamed kafka folder> start your kafka server  
 
-cd kafka  
-bin/kafka-server-start.sh config/server.properties   
+   cd kafka  
+   bin/kafka-server-start.sh config/server.properties   
 
-// Open a second terminal and run the below command to create a topic  
+   // Open a second terminal and run the below command to create a topic  
 
-cd kafka 
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test   
+   cd kafka 
+   bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test   
 
-// Open a third terminal and run your producer of the desired topic  
+   // Open a third terminal and run your producer of the desired topic  
 
-cd kafka 
-bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test   
+   cd kafka 
+   bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test   
 
-// Open a fourth terminal and run the consumer  
+   // Open a fourth terminal and run the consumer  
 
-cd kafka 
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test 
+   cd kafka 
+   bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -87,6 +87,8 @@ cd spark-project/spark_dashboard/kafka
 
 vi push_orders_data_in_topic.sh
 
+'''
+
 #!/bin/bash
 
 export PATH=$PATH:/home/ec2-user/kafka/bin
@@ -103,6 +105,8 @@ do
     sleep 60
 
 done
+
+'''
 
 
 /bin/bash push_orders_data_in_topic.sh ../data/ordersdata ip-172-31-28-92:9092 orders_data
