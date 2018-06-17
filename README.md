@@ -5,6 +5,14 @@ Building an analytics dashboard using Spark, Kafka, node.js
 
 To build an analytics dashboard to visualize number of orders getting shipped in every 10 secs interval of time using Spark, Kafka, node.js
 
+## Data description
+
+1. Dataset contains CSV files comprises shipping details of an e-commerce website.
+
+2. Dataset contains three columns ‘DateTime’, ‘OrderId’ & ‘Status’
+
+   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output9.png)
+
 ## Tools and technologies used
 
 Best suited technologies:
