@@ -11,7 +11,7 @@ To build an analytics dashboard to visualize number of orders getting shipped in
 
 2. Dataset contains three columns ‘DateTime’, ‘OrderId’ & ‘Status’
 
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output9.png)
+   ![alt text](images/output9.png)
 
 ## Tools and technologies used
 
@@ -312,30 +312,30 @@ http://ec2-34-208-176-32.us-west-2.compute.amazonaws.com:3001/
 
 // Terminal 1: Data is being pushed to a topic named orders_data
 
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output1.png)
+   ![alt text](images/output1.png)
    
 
 // Terminal 2: Data is read from topic orders_data by Spark streaming in 10 secs interval & pushed to another Kafka topic namely orders_ten_sec_data
 
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output2.png)
+   ![alt text](images/output2.png)
    
 
 // Terminal 3: Data is read from topic orders_ten_sec_data and pushed to index.js file
 
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output3.png)
+   ![alt text](images/output3.png)
    
 
 // Terminal 4: Using socket.io, data is streamed from node.js console to Highcharts
 
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output4.png)
+   ![alt text](images/output4.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output5.png)
+   ![alt text](images/output5.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output6.png)
+   ![alt text](images/output6.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output7.png)
+   ![alt text](images/output7.png)
    
-   ![alt text](https://github.com/NavyaSreeKanakala/kafka-spark-nodejs/blob/master/output8.png)
+   ![alt text](images/output8.png)
    
 
 ## Future Possibilites
